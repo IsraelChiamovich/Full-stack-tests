@@ -111,7 +111,7 @@ function cancelEdit() {
     document.querySelector('h1').textContent = 'BATTALION FORCE MANAGEMENT';
     document.querySelector('table').style.display = '';
     document.querySelector('.cancel-btn').remove();
-    const submitBtn = document.querySelector('.save-btn');
+    const submitBtn = document.getElementById('formSubmitBtn');
     submitBtn.textContent = 'Add Personnel';
     submitBtn.classList.remove('save-btn');
     document.getElementById('soldierForm').reset();
