@@ -3,9 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Managing soldier missions</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-    
+    <div class="page-container">
+        <h1>BATTALION FORCE MANAGEMENT</h1>
+        <hr>
+
+        <form id="soldierForm">
+            <input type="text" id="fullNameInput" placeholder="Full Name" required>
+            <input type="text" id="rankInput" placeholder="Rank" required>
+            <input type="text" id="positionInput" placeholder="Position" required>
+            <input type="text" id="platoonInput" placeholder="Platoon" required>
+            <input type="number" id="missionTimeInput" placeholder="Mission Time (seconds)" required>
+            <select id="statusInput" required>
+                <option value="Active">Active</option>
+                <option value="Reserve">Reserve</option>
+                <option value="Retired">Retired</option>
+            </select>
+            <button type="submit" id="formSubmitBtn">Add Personnel</button>
+        </form>
+        
+        <table id="soldiersTable">
+            <thead>
+                <tr>
+                    <th><button id="sortByNameBtn">Full Name ↓</button></th>
+                    <th>Rank</th>
+                    <th>Position</th>
+                    <th>Platoon</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="soldiersTableBody">
+            </tbody>
+        </table>
+        
+    </section>
+    </div>
 </body>
 </html>
