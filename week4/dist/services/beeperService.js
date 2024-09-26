@@ -15,7 +15,7 @@ class BeeperService {
     static getAllBeepers() {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                return yield (0, fileDataLayer_1.getFileData)("beepers");
+                return (yield (0, fileDataLayer_1.getFileData)("beepers"));
             }
             catch (err) {
                 throw new Error("Failed to get beepers");
@@ -39,7 +39,7 @@ class BeeperService {
                 const newBeeper = new beeperModel_1.Beeper(name);
                 const beepers = yield this.getAllBeepers();
                 beepers.push(newBeeper);
-                yield (0, fileDataLayer_1.saveFileData)('beepers', beepers);
+                yield (0, fileDataLayer_1.saveFileData)("beepers", beepers);
                 return newBeeper;
             }
             catch (err) {
@@ -57,7 +57,7 @@ class BeeperService {
             beeper.status = status;
             if (status === beeperModel_1.BeeperStatus.Deployed) {
                 if (!(latitude && longitude)) {
-                    throw new Error('please enter latitude and longitude');
+                    throw new Error("please enter latitude and longitude");
                 }
                 beeper.latitude = latitude;
                 beeper.longitude = longitude;
@@ -66,12 +66,12 @@ class BeeperService {
             else if (status === beeperModel_1.BeeperStatus.Detonated) {
                 beeper.detonated_at = new Date();
             }
-            yield (0, fileDataLayer_1.saveFileData)('beepers', beepers);
+            yield (0, fileDataLayer_1.saveFileData)("beepers", beepers);
             return beeper;
         });
     }
     static isValidPositionToUpdate(long, lat) {
-        return (35.04438 <= long && long <= 36.59793 && 33.01048 <= lat && lat <= 34.6793);
+        return (long >= 34.59793 && long <= 36.59793 && lat >= 33.01048 && lat <= 34.6793);
     }
     static isValidStatusUpdate(currentStatus, newStatus) {
         const statusOrder = [
@@ -92,7 +92,7 @@ class BeeperService {
             if (updatedBeeper) {
                 updatedBeeper.status = beeperModel_1.BeeperStatus.Detonated;
                 updatedBeeper.detonated_at = new Date();
-                yield (0, fileDataLayer_1.saveFileData)('beepers', beepers);
+                yield (0, fileDataLayer_1.saveFileData)("beepers", beepers);
                 console.log(`Beeper ${beeper.id} has been detonated`);
             }
         }), 10000);
@@ -103,7 +103,7 @@ class BeeperService {
                 const beepers = yield this.getAllBeepers();
                 const updatedBeepers = beepers.filter((beeper) => beeper.id !== id);
                 if (updatedBeepers.length !== beepers.length) {
-                    yield (0, fileDataLayer_1.saveFileData)('beepers', updatedBeepers);
+                    yield (0, fileDataLayer_1.saveFileData)("beepers", updatedBeepers);
                     return true;
                 }
                 return false;

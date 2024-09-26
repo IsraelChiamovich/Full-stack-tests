@@ -40,6 +40,7 @@ class BeeperController {
             const id = parseInt(req.params.id);
             const { status, lat, lon } = req.body;
             const updatedBeeper = await BeeperService.updateBeeperStatus(id, status as BeeperStatus, lat, lon);
+
             if (updatedBeeper) {
                 return res.status(200).json(updatedBeeper);
             }
