@@ -1,10 +1,12 @@
 // src/routes/studentRoutes.ts
 
 import { Router } from 'express';
+import { register } from '../controllers/studentController';
+import { authenticateTeacher } from '../middlewares/authMiddleware';
 
 const router = Router();
 
-// router.post('/register', register);
-// router.get("info", authenticateTeacher, getStudentInfo);
+router.post("/register", register);
+
 
 export default router;
