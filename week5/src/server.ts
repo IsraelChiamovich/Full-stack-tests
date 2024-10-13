@@ -2,11 +2,10 @@
 
 import express from "express";
 import dotenv from "dotenv";
-// import authRoutes from './routes/auth.routes';
+import authRoutes from './routes/authRoutes';
 import teacherRoutes from './routes/teacherRoutes';
 import studentRoutes from './routes/studentRoutes';
 import gradeRoutes from './routes/gradeRoutes';
-// import { verifyToken } from "./middleware/authMiddleware";
 import connectDB from "./config/db";
 import cookieParser from "cookie-parser";
 import swaggerRouter from "./config/swagger";
@@ -23,7 +22,7 @@ app.use(cookieParser());
 connectDB();
 
 
-//app.use('/auth', authRoutes);
+app.use('/auth', authRoutes);
 app.use('/teachers', teacherRoutes);
 app.use('/students', studentRoutes);
 app.use('/grades', gradeRoutes);

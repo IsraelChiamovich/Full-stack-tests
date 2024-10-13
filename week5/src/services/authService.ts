@@ -17,12 +17,14 @@ export const loginUser = async (email: string, password: string) => {
     if (user) {
       role = "student";
     } else {
-      throw new Error("User not found"); 
+      console.error("User not found");
+      throw new Error("User not found");
     }
   }
 
   const isMatch = await bcrypt.compare(password, user.password);
   if (!isMatch) {
+    console.error("Incorrect password"); 
     throw new Error("Incorrect password");
   }
 

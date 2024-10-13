@@ -47,13 +47,14 @@ const getStudentGradesForSelfService = async (studentId: string) => {
   return await Student.findById(studentId).populate('grades');
 };
 
-const getStudentsInfoService = async (teacherId: string, studentId: string) => {
-    const classInfo = await Class.findOne({ teacher: teacherId });
+const getStudentsInfoService = async (teacherId: string) => {
+    const classInfo = await Class.findOne({ teacher: teacherId }).populate('students');
     if (!classInfo) throw new Error("Class not found");
-    const studentObgectId = new Types.ObjectId(studentId);
-    if (!classInfo.students.includes(studentObgectId)) throw new Error("Student not found in class");
-    return await Student.findById(studentId).populate('class grades');
+    const students = await Student.find({ class: classInfo._id }).populate('grades');
+    if (!students.length) throw new Error("No students found in class");
+    return students;
   };
+  
   
 
 export {addGradeService, changeGradeService, getClassAverageService, getStudentGradesForTeacherService, getStudentGradesForSelfService, getStudentsInfoService};

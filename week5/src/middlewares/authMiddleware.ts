@@ -1,28 +1,28 @@
-// // src/middlewares/authMiddleware.ts
+// src/middlewares/authMiddleware.ts
 
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 
-const verifyToken = (token: string | undefined) => token ? jwt.verify(token, process.env.JWT_SECRET!) : null;
+const verifyToken = (token: string) => jwt.verify(token, process.env.JWT_SECRET!);
 
 const authenticate = (role: string) => (req: Request, res: Response, next: NextFunction): void => {
-  const token = req.cookies.token || req.headers.authorization?.split(" ")[1];
+  const token = req.cookies.token;
   if (!token) {
-     res.status(401).json({ message: "Unauthorized" });
-     return;
+    res.status(401).json({ message: "Unauthorized: No token provided" });
+    return;
   }
 
   try {
     const decoded = verifyToken(token);
     if (!decoded || (decoded as any).role !== role) {
-     res.status(403).json({ message: "Access forbidden" });
-     return;
+      res.status(403).json({ message: "Access forbidden: Insufficient role" });
+      return;
     }
     req.body.user = decoded;
     next();
   } catch (error) {
-     res.status(401).json({ message: "Invalid token", error });
-     return;
+    res.status(401).json({ message: "Invalid token", error });
+    return;
   }
 };
 

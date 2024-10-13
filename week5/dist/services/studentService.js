@@ -18,15 +18,10 @@ const classModel_1 = __importDefault(require("../models/classModel"));
 const studentModel_1 = __importDefault(require("../models/studentModel"));
 const registerStudent = (name, email, password, className) => __awaiter(void 0, void 0, void 0, function* () {
     const theClass = yield classModel_1.default.findOne({ name: className });
-    if (!theClass) {
+    if (!theClass)
         throw new Error("Class does not exist");
-    }
-    const newStudent = yield studentModel_1.default.create({
-        name,
-        email,
-        password,
-        class: theClass._id,
-    });
+    const newStudent = yield studentModel_1.default.create({ name, email, password, class: theClass._id });
+    yield classModel_1.default.findByIdAndUpdate(theClass._id, { $push: { students: newStudent._id } });
     return newStudent;
 });
 exports.registerStudent = registerStudent;

@@ -58,13 +58,13 @@ const getStudentGradeForSelf = async (req: Request, res: Response) => {
 
 const getStudentsInfo = async (req: Request, res: Response) => {
     try {
-        const { studentId } = req.params;
-        const teacherId = req.body.user.id;
-        const student = await getStudentsInfoService(teacherId, studentId);
-        res.status(200).json({ student });
+      const teacherId = req.body.user.id;
+      const students = await getStudentsInfoService(teacherId);
+      res.status(200).json({ students });
     } catch (error: any) {
-        res.status(500).json({ message: error.message });
+      res.status(500).json({ message: error.message });
     }
-};
+  };
+  
 
 export { addGrade, changeGrade, getClassAverage, getStudentGradeForTeacher, getStudentGradeForSelf, getStudentsInfo };

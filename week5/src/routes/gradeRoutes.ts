@@ -9,7 +9,7 @@ const router = Router();
 router.post('/add-grade', authenticateTeacher, addGrade);
 router.put('/change-grade', authenticateTeacher, changeGrade);
 router.get('/class-average', authenticateTeacher, getClassAverage);
-router.get("/students/info", authenticateTeacher, getStudentsInfo);
+router.get('/students-info', authenticateTeacher, getStudentsInfo);
 router.get('/student-grade/:studentId', authenticateTeacher, getStudentGradeForTeacher);
 router.get('/student-grade/', authenticateStudent, getStudentGradeForSelf);
 

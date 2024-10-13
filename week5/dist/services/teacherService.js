@@ -17,20 +17,11 @@ exports.registerTeacher = void 0;
 const classModel_1 = __importDefault(require("../models/classModel"));
 const teacherModel_1 = __importDefault(require("../models/teacherModel"));
 const registerTeacher = (name, email, password, className) => __awaiter(void 0, void 0, void 0, function* () {
-    const existingClass = yield classModel_1.default.findOne({ name: className });
-    if (existingClass) {
+    if (yield classModel_1.default.findOne({ name: className }))
         throw new Error("Class already exists");
-    }
-    const newClass = yield classModel_1.default.create({
-        name: className,
-    });
-    classModel_1.default.create(newClass);
-    const newTeacher = yield teacherModel_1.default.create({
-        name,
-        email,
-        password,
-        class: newClass._id,
-    });
+    const newClass = yield classModel_1.default.create({ name: className });
+    const newTeacher = yield teacherModel_1.default.create({ name, email, password, class: newClass._id });
+    yield classModel_1.default.findByIdAndUpdate(newClass._id, { teacher: newTeacher._id });
     return newTeacher;
 });
 exports.registerTeacher = registerTeacher;

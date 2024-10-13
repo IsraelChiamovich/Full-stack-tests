@@ -2,7 +2,6 @@
 
 import { Router } from 'express';
 import { register } from '../controllers/studentController';
-import { authenticateTeacher } from '../middlewares/authMiddleware';
 
 const router = Router();
 
