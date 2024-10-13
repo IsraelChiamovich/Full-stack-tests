@@ -1,3 +1,0 @@
-// src/DTO/newBeeperDto.ts
-
-

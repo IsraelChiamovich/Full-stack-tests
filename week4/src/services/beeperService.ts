@@ -51,6 +51,10 @@ class BeeperService {
         throw new Error("please enter latitude and longitude");
       }
 
+      if (!this.isValidPositionToUpdate(longitude, latitude)) {
+        throw new Error("invalid position");
+      }
+
       beeper.latitude = latitude;
       beeper.longitude = longitude;
       this.timerBeeperDetonation(beeper);

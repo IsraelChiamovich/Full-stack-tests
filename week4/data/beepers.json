@@ -2,8 +2,11 @@
   {
     "name": "israel",
     "id": 9490323806424276,
-    "status": "shipped",
-    "created_at": "2024-09-26T14:31:53.043Z"
+    "status": "detonated",
+    "created_at": "2024-09-26T14:31:53.043Z",
+    "latitude": 34.7214,
+    "longitude": 36.5979,
+    "detonated_at": "2024-09-26T15:02:03.588Z"
   },
   {
     "name": "ov",
@@ -44,13 +47,34 @@
   {
     "name": "fffffffffffff",
     "id": 144457286015651,
-    "status": "shipped",
-    "created_at": "2024-09-26T14:45:52.875Z"
+    "status": "detonated",
+    "created_at": "2024-09-26T14:45:52.875Z",
+    "latitude": 34.1,
+    "longitude": 35.1,
+    "detonated_at": "2024-09-29T12:07:52.097Z"
   },
   {
     "name": "ההההה",
     "id": 15513016265175272,
     "status": "shipped",
     "created_at": "2024-09-26T14:53:51.079Z"
+  },
+  {
+    "name": "vvv",
+    "id": 30347008030169188,
+    "status": "detonated",
+    "created_at": "2024-09-26T14:59:47.199Z",
+    "latitude": 33.61090235193423,
+    "longitude": 35.578243311406894,
+    "detonated_at": "2024-09-26T15:00:04.718Z"
+  },
+  {
+    "name": "Test",
+    "id": 46773176757476056,
+    "status": "detonated",
+    "created_at": "2024-09-29T12:27:23.297Z",
+    "latitude": 34.1,
+    "longitude": 35.1,
+    "detonated_at": "2024-09-29T12:28:20.121Z"
   }
 ]
