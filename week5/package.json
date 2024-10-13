@@ -2,9 +2,9 @@
   "name": "blog-platform",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "tsc && nodemon dist/app.js",
+    "start": "tsc && nodemon dist/server.js",
     "dev": "node src/app.ts",
     "build": "tsc"
   },
